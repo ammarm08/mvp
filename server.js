@@ -37,15 +37,14 @@ var fetchArtists = function(req, res, next) {
 var fetchSongs = function(req, res, next) {
 
   var songId = req.body.song;
-  console.log(songId);
 
-  // geniusClient.getSong(songId, function(err, data) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     res.json(data);
-  //   }
-  // })
+  geniusClient.getSong(songId, function(err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  })
 }
 
 //router

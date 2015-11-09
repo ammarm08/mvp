@@ -68,9 +68,12 @@ angular.module('graffiti.songs', [])
     $scope.data = Artists.get();
     console.log($scope.data);
 
-    $scope.getAnnotations = function() {
-
-
+    $scope.getAnnotations = function(id) {
+      Artists.request({song: id}, 'songs')
+      .then(function(res) {
+        var parsed = JSON.parse(res);
+        console.log(parsed.response.song);
+      })
     }
 
   })
