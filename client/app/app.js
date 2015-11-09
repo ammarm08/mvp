@@ -66,5 +66,6 @@ angular.module('graffiti.songs', [])
   .controller('ResultsController', function($scope, $location, Artists) {
 
     $scope.data = Artists.get();
+    console.log($scope.data);
 
   })
