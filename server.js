@@ -21,7 +21,7 @@ var basicStuff = function(req, res, next) {
   res.send('test');
 }
 
-var fetchData = function(req, res, next) {
+var fetchArtists = function(req, res, next) {
 
   var artist = req.body.artist;
 
@@ -34,10 +34,31 @@ var fetchData = function(req, res, next) {
   })
 }
 
+var fetchSongs = function(req, res, next) {
+
+  var songId = req.body.song;
+  console.log(songId);
+
+  // geniusClient.getSong(songId, function(err, data) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     res.json(data);
+  //   }
+  // })
+}
+
 //router
-musicRouter.route('/')
+
+musicRouter.route('/').get(basicStuff);
+
+musicRouter.route('/artists')
   .get(basicStuff)
-  .post(fetchData);
+  .post(fetchArtists);
+
+musicRouter.route('/songs')
+  .get(basicStuff)
+  .post(fetchSongs);
 
 //fire up the server
 console.log('Listening on 3000');

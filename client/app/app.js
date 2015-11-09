@@ -27,12 +27,12 @@ angular.module('graffiti.services', [])
       savedData = val;
     };
 
-    var request = function(artist){
+    var request = function(query, endpoint){
 
       return $http({
           method: 'POST',
-          url: '/api/music',
-          data: artist
+          url: '/api/music/' + endpoint,
+          data: query
         })
         .then(function (res) {
           return res.data;
@@ -52,7 +52,7 @@ angular.module('graffiti.home', [])
     $scope.data = {};
 
     $scope.getData = function() {
-      Artists.request($scope.data)
+      Artists.request($scope.data, 'artists')
       .then(function(res) {
         var parsed = JSON.parse(res);
         Artists.set(parsed.response);
@@ -67,5 +67,10 @@ angular.module('graffiti.songs', [])
 
     $scope.data = Artists.get();
     console.log($scope.data);
+
+    $scope.getAnnotations = function() {
+
+
+    }
 
   })
