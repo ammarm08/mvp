@@ -1,7 +1,7 @@
 <div class='container' ng-controller="ResultsController">
-  <div>
-    <div>
-      <div>Title:</div>
+  <div ng-repeat='song in data.hits | orderBy:"-result.pyongs_count"'>
+    <div class='song row' ng-attr-width='{{song.result.pyongs_count}}'>
+      <div>Title: {{song.result.title}}</div>
     </div>
   </div>
 </div>

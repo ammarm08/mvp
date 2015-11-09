@@ -17,6 +17,16 @@ angular.module('graffiti', ['graffiti.services', 'graffiti.home', 'graffiti.song
 angular.module('graffiti.services', [])
   .factory('Artists', function($http) {
 
+    var savedData = {};
+
+    var get = function() {
+      return savedData;
+    };
+
+    var set = function(val) {
+      savedData = val;
+    };
+
     var request = function(artist){
 
       return $http({
@@ -30,7 +40,9 @@ angular.module('graffiti.services', [])
     };
 
     return {
-      request: request
+      request: request,
+      set: set,
+      get: get
     }
   })
 
@@ -43,8 +55,8 @@ angular.module('graffiti.home', [])
       Artists.request($scope.data)
       .then(function(res) {
         var parsed = JSON.parse(res);
-        console.log(parsed.response);
-        $scope.data.artist='';
+        Artists.set(parsed.response);
+        $location.path('/results');
       })
     }
 
@@ -53,6 +65,6 @@ angular.module('graffiti.home', [])
 angular.module('graffiti.songs', [])
   .controller('ResultsController', function($scope, $location, Artists) {
 
-    $scope.data = {};
+    $scope.data = Artists.get();
 
   })
