@@ -116,7 +116,7 @@ angular.module('graffiti.songs', [])
         .then(function(previewUrl) {
           $scope.data.current = $sce.trustAsResourceUrl(previewUrl);
           var el = angular.element(document.querySelector('#current'));
-          el.play();
+          console.log(el);
         })
       })
     }
