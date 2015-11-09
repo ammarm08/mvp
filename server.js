@@ -22,6 +22,7 @@ var basicStuff = function(req, res, next) {
 }
 
 var fetchData = function(req, res, next) {
+
   var artist = req.body.artist;
 
   geniusClient.search(artist, function(err, data) {

@@ -1,6 +1,6 @@
 <div id='container' ng-controller="HomeController">
-  <form>
-    <input name="artist" type="text" placeholder="enter artist" required/>
+  <form ng-submit="getData()">
+    <input name="artist" type="text" ng-model="data.artist" placeholder="enter artist" required/>
     <br>
     <button>Submit!</button>
   </form>

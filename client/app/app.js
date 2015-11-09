@@ -17,7 +17,17 @@ angular.module('graffiti', ['graffiti.services', 'graffiti.home', 'graffiti.song
 angular.module('graffiti.services', [])
   .factory('Artists', function($http) {
 
-    var request = function(artist){};
+    var request = function(artist){
+
+      return $http({
+          method: 'POST',
+          url: '/api/music',
+          data: artist
+        })
+        .then(function (res) {
+          return res.data;
+        });
+    };
 
     return {
       request: request
@@ -28,6 +38,15 @@ angular.module('graffiti.home', [])
   .controller('HomeController', function($scope, $location, Artists) {
 
     $scope.data = {};
+
+    $scope.getData = function() {
+      Artists.request($scope.data)
+      .then(function(res) {
+        var parsed = JSON.parse(res);
+        console.log(parsed.response);
+        $scope.data.artist='';
+      })
+    }
 
   })
 
