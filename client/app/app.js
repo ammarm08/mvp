@@ -63,24 +63,8 @@ angular.module('graffiti.services', [])
       })
     }
 
-    // var fetchPreview = function(code) {
-
-    //   var codeString = 'isrc:' + code;
-    //   var type = '&type=track'
-    //   var uri = 'http://api.spotify.com/v1/search?q=' + codeString + type; 
-
-    //   return $http({
-    //     method: 'GET',
-    //     url: uri
-    //   })
-    //   .then(function (res) {
-    //     return res;
-    //   })
-    // }
-
     return {
       request: request,
-      // fetchPreview: fetchPreview
     }
   })
   .factory('Genius', function() {
