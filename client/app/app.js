@@ -47,18 +47,40 @@ angular.module('graffiti.services', [])
   })
   .factory('SpotifyPreview', function($http) {
 
-    var request = function(song, artist) {
+    var request = function(song, artist, isrc) {
 
       var artistString = 'artist:' + artist + '+';
       var songString = 'title:' + song;
       var limit = '&type=track&limit=1'
       var uri = 'http://api.spotify.com/v1/search?q=' + artistString + songString + limit; 
 
-      console.log(uri);
+      return $http({
+        method: 'GET',
+        url: uri
+      })
+      .then(function (res) {
+        return res.data.tracks.items[0].preview_url;
+      })
     }
 
+    // var fetchPreview = function(code) {
+
+    //   var codeString = 'isrc:' + code;
+    //   var type = '&type=track'
+    //   var uri = 'http://api.spotify.com/v1/search?q=' + codeString + type; 
+
+    //   return $http({
+    //     method: 'GET',
+    //     url: uri
+    //   })
+    //   .then(function (res) {
+    //     return res;
+    //   })
+    // }
+
     return {
-      request: request
+      request: request,
+      // fetchPreview: fetchPreview
     }
   })
 
@@ -89,9 +111,12 @@ angular.module('graffiti.songs', [])
       Artists.request({song: id}, 'songs')
       .then(function(res) {
         var parsed = JSON.parse(res);
-        return parsed.response.song;
+        
+        SpotifyPreview.request(parsed.response.song.title, $scope.data.artist)
+        .then(function(previewUrl) {
+          $scope.data.current = previewUrl;
+        })
       })
-      .then(SpotifyPreview.request(parsed.response.song.title, $scope.data.artist));
     }
 
   })
