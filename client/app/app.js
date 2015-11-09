@@ -83,6 +83,16 @@ angular.module('graffiti.services', [])
       // fetchPreview: fetchPreview
     }
   })
+  .factory('Genius', function() {
+
+    var read = function(data) {
+      
+    };
+
+    return {
+      read: read
+    }
+  })
 
 angular.module('graffiti.home', [])
   .controller('HomeController', function($scope, $location, Artists) {
@@ -101,16 +111,17 @@ angular.module('graffiti.home', [])
   })
 
 angular.module('graffiti.songs', [])
-  .controller('ResultsController', function($scope, $location, $sce, Artists, SpotifyPreview) {
+  .controller('ResultsController', function($scope, $location, $sce, Artists, SpotifyPreview, Genius) {
 
     $scope.data = Artists.get();
     $scope.data.artist = $scope.data.hits[0].result.primary_artist.name || null;
-    console.log($scope.data);
 
     $scope.getAnnotations = function(id) {
       Artists.request({song: id}, 'songs')
       .then(function(res) {
         var parsed = JSON.parse(res);
+        $scope.data.annotations = parsed.response.song.description_annotation.annotations[0].body.plain;
+        console.log($scope.data.annotations);
         
         SpotifyPreview.request(parsed.response.song.title, $scope.data.artist)
         .then(function(previewUrl) {

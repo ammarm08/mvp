@@ -38,7 +38,7 @@ var fetchSongs = function(req, res, next) {
 
   var songId = req.body.song;
 
-  geniusClient.getSong(songId, function(err, data) {
+  geniusClient.getSong(songId, {text_format: 'plain'}, function(err, data) {
     if (err) {
       console.log(err);
     } else {
