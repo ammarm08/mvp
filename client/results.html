@@ -1,5 +1,6 @@
 <div class='container' ng-controller="ResultsController">
-  <div ng-repeat='song in data.hits | orderBy:"-result.pyongs_count"'>
+  <audio></audio>
+  <div ng-repeat='song in data.hits | orderBy:"-result.pyongs_count"' ng-if='song.result.pyongs_count'>
     <div class='song row' ng-attr-width='{{song.result.pyongs_count}}'>
       <div>Title: {{song.result.title}}</div>
       <img ng-src="{{song.result.header_image_url}}" ng-click="getAnnotations(song.result.id)"/>

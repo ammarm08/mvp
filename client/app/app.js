@@ -47,7 +47,7 @@ angular.module('graffiti.services', [])
   })
   .factory('SpotifyPreview', function($http) {
 
-    var request = function(artist, song) {
+    var request = function(song, artist) {
 
       var artistString = 'artist:' + artist + '+';
       var songString = 'title:' + song;
@@ -89,9 +89,9 @@ angular.module('graffiti.songs', [])
       Artists.request({song: id}, 'songs')
       .then(function(res) {
         var parsed = JSON.parse(res);
-        console.log(parsed.response.song);
-        SpotifyPreview.request($scope.data.artist, parsed.response.song.title);
+        return parsed.response.song;
       })
+      .then(SpotifyPreview.request(parsed.response.song.title, $scope.data.artist));
     }
 
   })
