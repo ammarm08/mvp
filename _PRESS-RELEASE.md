@@ -17,28 +17,29 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Graffiti.IO
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Read the liner notes while listening to your favorite band.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Graffiti.IO is for people who can't multitask between listening to the music and listening to the lyrics.
+  Enter an artist, select a song, and hit play. Liner notes + annotations will periodically pop up to give you more context about the song.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > Music isn't just about the beat, and it isn't just about the lyrics. Unfortunately, some goldfish-minded people like the Graffit.IO founder can't pay attention to both at the same time. This app gives the perpetual head-nodders and beat-rockers a chance to see what the song is about without needing to pay very careful attention to the lyrics.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > As a song is playing, Graffiti.IO will periodically serve up an annotation or description that has been highly upvoted on the Genius.com platform. That's it.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > "Our product is really just an integration of alot of cool things already out there. While our current beta product is limited to just annotations pulled from Genius, our long-term goal is to build out interactivity similar to the real-time commenting of Periscope livestreams."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > 1. Enter an artist. 2. Pick a song. 3. Hit play.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > "This is the new-age vinyl listening session. On rainy Friday nights, I call my friends over, order in some bomb-ass pad thai, put this shit on my projector screen, and we literally 'watch' the music and talk about it."
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Take Graffiti.IO for a test ride at graffitiIO.herokuapp.com
