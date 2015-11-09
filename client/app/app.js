@@ -115,8 +115,7 @@ angular.module('graffiti.songs', [])
         SpotifyPreview.request(parsed.response.song.title, $scope.data.artist)
         .then(function(previewUrl) {
           $scope.data.current = $sce.trustAsResourceUrl(previewUrl);
-          var el = angular.element(document.querySelector('#current'));
-          console.log(el);
+          document.getElementById('current').play();
         })
       })
     }
