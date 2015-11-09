@@ -101,7 +101,7 @@ angular.module('graffiti.home', [])
   })
 
 angular.module('graffiti.songs', [])
-  .controller('ResultsController', function($scope, $location, Artists, SpotifyPreview) {
+  .controller('ResultsController', function($scope, $location, $sce, Artists, SpotifyPreview) {
 
     $scope.data = Artists.get();
     $scope.data.artist = $scope.data.hits[0].result.primary_artist.name || null;
@@ -114,7 +114,9 @@ angular.module('graffiti.songs', [])
         
         SpotifyPreview.request(parsed.response.song.title, $scope.data.artist)
         .then(function(previewUrl) {
-          $scope.data.current = previewUrl;
+          $scope.data.current = $sce.trustAsResourceUrl(previewUrl);
+          var el = angular.element(document.querySelector('#current'));
+          el.play();
         })
       })
     }
