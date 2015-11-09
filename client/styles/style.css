@@ -1,4 +1,17 @@
 
+h1 {
+  text-align: center;
+  margin: 100px auto;
+  width: 600px;
+}
+
+form {
+  margin: auto;
+  width: 600px;
+}
+
+
+
 img{
   margin:auto;
   width: 400px;
