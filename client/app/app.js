@@ -1,4 +1,4 @@
-angular.module('graffiti', ['graffiti.services', 'graffiti.home', 'graffiti.songs', 'ngRoute'])
+angular.module('graffiti', ['graffiti.services', 'graffiti.home', 'graffiti.songs', 'ngRoute', 'ui.bootstrap'])
   .config(function($routeProvider, $httpProvider) {
     $routeProvider
       .when('/home', {
