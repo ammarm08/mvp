@@ -1,0 +1,27 @@
+{
+  "name": "graffitiIO",
+  "homepage": "https://github.com/ammarm08/2015-10-mvp",
+  "authors": [
+    "ammarm08 <ammar.mian08@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7"
+  }
+}

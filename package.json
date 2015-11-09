@@ -1,0 +1,16 @@
+{
+  "name": "graffiti",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5",
+    "morgan": "^1.1.1",
+    "node-genius": "^1.0.4",
+    "passport": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "q": "^1.0.1",
+    "request": "^2.36.0"
+  }
+}
