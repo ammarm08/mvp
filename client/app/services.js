@@ -53,11 +53,19 @@ angular.module('graffiti.services', [])
   })
   .factory('Genius', function() {
 
-    var read = function(data) {
-      
+    var flatten = function(list) {
+      var result = [];
+
+      for (var i = 0; i < list.length; i++) {
+        var item = list[i];
+        var notes = item.annotations[0].body.plain;
+        result.push(notes);
+      }
+
+      return result;
     };
 
     return {
-      read: read
+      flatten: flatten
     }
   })

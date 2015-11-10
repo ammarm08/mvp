@@ -4,38 +4,23 @@ angular.module('graffiti.songs', [])
     $scope.data = Artists.get();
     $scope.data.artist = $scope.data.hits[0].result.primary_artist.name || null;
 
-    $scope.getAnnotations = function(id) {
-      Artists.request({song: id}, 'songs')
-      .then(function(res) {
-        var parsed = JSON.parse(res);
+    $scope.getAnnotations = function(id, title) {
+      $scope.data.song = title;
 
-        // INTERVAL PROBLEM
-        if (parsed.response.song.description_annotation.annotations[0]) {
-          $scope.data.annotations = parsed.response.song.description_annotation.annotations[0].body.plain.split('.');
-        }
-        if ($scope.running) $interval.cancel($scope.textAnimation);
-        if (!!$scope.data.annotations) $scope.textAnimation;
-        // INTERVAL PROBLEM
+      Artists.request({song: id}, 'referents')
+      .then(function(res) {
+        var parsed = JSON.parse(res.body);
+        $scope.data.annotations = Genius.flatten(parsed.response.referents);
+        console.log($scope.data.annotations.length);
+
+        // $scope.data.annotations = parsed.response.song.description_annotation.annotations[0].body.plain;
         
-        SpotifyPreview.request(parsed.response.song.title, $scope.data.artist)
-        .then(function(previewUrl) {
-          $scope.data.current = $sce.trustAsResourceUrl(previewUrl);
-          document.getElementById('current').play();
-        })
+        // SpotifyPreview.request(parsed.response.song.title, $scope.data.artist)
+        // .then(function(previewUrl) {
+        //   $scope.data.current = $sce.trustAsResourceUrl(previewUrl);
+        //   document.getElementById('current').play();
+        // })
       })
     }
-
-    // INTERVAL PROBLEM
-    $scope.textAnimation = $interval(function() {
-      if ($scope.data.annotations.length === 0) {
-        $scope.data.annotations = [];
-        $scope.running = false;
-        $interval.cancel($scope.textAnimation);
-      }
-
-      $scope.running = true;
-      $scope.data.note = $scope.data.annotations.shift();
-    }, 3000)
-    // INTERVAL PROBLEM 
 
   })

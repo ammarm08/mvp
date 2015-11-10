@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var path = require('path');
+var request = require('request');
 var app = express();
 var musicRouter = express.Router();
 
@@ -48,6 +49,33 @@ var fetchSongs = function(req, res, next) {
   })
 }
 
+var fetchReferents = function(req, res, next) {
+
+  var song_id = req.body.song
+  console.log(song_id);
+
+  var baseRequest = request.defaults({
+    baseUrl: "https://api.genius.com",
+    headers: { "Authorization": "Bearer " + token }
+  });
+
+  var options = {
+    url: '/referents',
+    qs: {song_id: song_id, text_format: 'plain'}
+  }
+
+  baseRequest(options, function(err, data) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    res.json(data);
+  });
+
+
+
+}
 //router
 
 musicRouter.route('/').get(basicStuff);
@@ -59,6 +87,10 @@ musicRouter.route('/artists')
 musicRouter.route('/songs')
   .get(basicStuff)
   .post(fetchSongs);
+
+musicRouter.route('/referents')
+  .get(basicStuff)
+  .post(fetchReferents);
 
 //fire up the server
 console.log('Listening on 3000');
