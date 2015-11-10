@@ -40,8 +40,16 @@ audio{
   background: yellow;
 }
 
+uib-slide {
+  position: relative;
+}
+
 .caption {
   color: black;
-  background: white;
+  background: yellow;
+  position: absolute;
+  top: 48%;
+  right: 40%;
+  font-size: 50px;
 }
 

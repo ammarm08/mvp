@@ -8,10 +8,14 @@ angular.module('graffiti.songs', [])
       Artists.request({song: id}, 'songs')
       .then(function(res) {
         var parsed = JSON.parse(res);
-        $scope.data.annotations = parsed.response.song.description_annotation.annotations[0].body.plain.split('.');
 
+        // INTERVAL PROBLEM
+        if (parsed.response.song.description_annotation.annotations[0]) {
+          $scope.data.annotations = parsed.response.song.description_annotation.annotations[0].body.plain.split('.');
+        }
         if ($scope.running) $interval.cancel($scope.textAnimation);
-        $scope.textAnimation;
+        if (!!$scope.data.annotations) $scope.textAnimation;
+        // INTERVAL PROBLEM
         
         SpotifyPreview.request(parsed.response.song.title, $scope.data.artist)
         .then(function(previewUrl) {
@@ -21,6 +25,7 @@ angular.module('graffiti.songs', [])
       })
     }
 
+    // INTERVAL PROBLEM
     $scope.textAnimation = $interval(function() {
       if ($scope.data.annotations.length === 0) {
         $scope.data.annotations = [];
@@ -31,5 +36,6 @@ angular.module('graffiti.songs', [])
       $scope.running = true;
       $scope.data.note = $scope.data.annotations.shift();
     }, 3000)
+    // INTERVAL PROBLEM 
 
   })
