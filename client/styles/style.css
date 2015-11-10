@@ -14,7 +14,7 @@ body {
 h1 {
   color: yellow;
   font-size: 20pt;
-  border: 2pt solid yellow;
+  border: 3pt solid yellow;
   text-align: center;
 }
 
@@ -80,6 +80,8 @@ uib-slide {
 }
 
 .home {
+  margin: 10px;
+  width: 40px;
   outline: 0;
   background-color: Transparent;
   border: 2pt solid yellow;
@@ -87,6 +89,10 @@ uib-slide {
 
 .home:hover {
   background-color: #4E1B9B;
+  cursor: pointer;
+}
+
+img:hover {
   cursor: pointer;
 }
 

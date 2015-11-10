@@ -33,7 +33,7 @@ angular.module('graffiti.songs', [])
       $scope.stopInterval();
       var items = $scope.data.annotations.slice(0);
 
-      var runningInterval = $interval(function() {
+      runningInterval = $interval(function() {
 
         if (items.length) {
           $scope.data.note = items.shift();
