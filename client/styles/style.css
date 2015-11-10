@@ -4,6 +4,15 @@ body {
   background-size: 100%;
 }
 
+nav {
+  background-color: black;
+}
+
+.navbar-brand {
+  color: black;
+  background: yellow;
+}
+
 h1 {
   text-align: center;
   margin: auto;
