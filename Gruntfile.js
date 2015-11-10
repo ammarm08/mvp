@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         dest: 'dist/app.js'
       },
       vendor: {
-        src: ['client/lib/angular/angular.js', 'client/lib/angular-route/angular-route.js'],
+        src: ['client/lib/angular/angular.js', 'client/lib/angular-route/angular-route.js', 'client/lib/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js'],
         dest: 'dist/vendor.js'
       }
     },
