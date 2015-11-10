@@ -1,5 +1,7 @@
 body {
   font-family: 'Maven Pro';
+  background-image: url('/assets/subway.jpg');
+  background-size: 100%;
 }
 
 h1 {
@@ -15,14 +17,31 @@ form {
 }
 
 .music {
-  margin: 250px auto;
+  margin: auto;
 }
 
 img{
   margin:auto;
+  width: 500px;
 }
 
 audio{
   width: 100%;
+}
+
+.annotations {
+  margin: 100px auto;
+}
+
+.note {
+  font-size: 30pt;
+  text-align: center;
+  color: black;
+  background: yellow;
+}
+
+.caption {
+  color: black;
+  background: white;
 }
 

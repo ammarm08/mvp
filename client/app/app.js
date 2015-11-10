@@ -113,10 +113,8 @@ angular.module('graffiti.songs', [])
       .then(function(res) {
         var parsed = JSON.parse(res);
         $scope.data.annotations = parsed.response.song.description_annotation.annotations[0].body.plain.split('.');
-        console.log($scope.data.annotations);
 
-        $interval.cancel($scope.textAnimation);
-        $scope.data.note = $scope.data.annotations.shift();
+        if ($scope.running) $interval.cancel($scope.textAnimation);
         $scope.textAnimation;
         
         SpotifyPreview.request(parsed.response.song.title, $scope.data.artist)
@@ -129,9 +127,13 @@ angular.module('graffiti.songs', [])
 
     $scope.textAnimation = $interval(function() {
       if ($scope.data.annotations.length === 0) {
+        $scope.data.annotations = [];
+        $scope.running = false;
         $interval.cancel($scope.textAnimation);
       }
+
+      $scope.running = true;
       $scope.data.note = $scope.data.annotations.shift();
-    }, 5000)
+    }, 3000)
 
   })

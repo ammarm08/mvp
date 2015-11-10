@@ -2,7 +2,15 @@
 
   <div class = "row">
 
-    <div class = "music col-sm-3 pull-left">
+    <div class='annotations'>
+      <span class='note'>{{data.note}}</span>
+    </div>
+
+  </div>
+
+  <div class = "row">
+
+    <div class = "music">
 
       <uib-carousel>
         <uib-slide ng-repeat='song in data.hits | orderBy:"-result.pyongs_count"' 
@@ -18,10 +26,6 @@
 
     </div>
 
-    <div class='col-sm-9 pull-right'>
-      <span class='notes'>{{data.note}}</span>
-    </div>
-  
   </div>
 
 </div>
