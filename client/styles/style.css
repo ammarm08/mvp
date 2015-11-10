@@ -44,12 +44,12 @@ audio{
 }
 
 .note {
-  font-size: 30pt;
+  font-size: 20pt;
   text-align: center;
   color: black;
   background: yellow;
   position: absolute;
-  top: 25%;
+  top: 5%;
   z-index: 99;
 }
 

@@ -19,7 +19,7 @@
 <div class='container' ng-controller="ResultsController">
   <div class = "row">
     <div class='annotations'>
-      <span class='note'>{{data.annotations}}</span>
+      <span class='note'>{{data.note}}</span>
     </div>
   </div>
 
@@ -33,10 +33,6 @@
             <img ng-src="{{song.result.header_image_url}}" ng-click="getAnnotations(song.result.id, song.result.title)"/>
         </uib-slide>
       </uib-carousel>
-
-      <!-- <audio id='current' preload="auto" ng-src="{{data.current}}" 
-            type="audio/mp3" controls onloadeddata="this.play()">
-      </audio> -->
 
     </div>
   </div>

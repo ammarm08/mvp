@@ -1,5 +1,5 @@
 angular.module('graffiti.services', [])
-  .factory('Artists', function($http) {
+  .factory('API', function($http) {
 
     var savedData = {};
 
@@ -11,7 +11,7 @@ angular.module('graffiti.services', [])
       savedData = val;
     };
 
-    var request = function(query, endpoint){
+    var geniusRequest = function(query, endpoint){
 
       return $http({
           method: 'POST',
@@ -23,49 +23,7 @@ angular.module('graffiti.services', [])
         });
     };
 
-    return {
-      request: request,
-      set: set,
-      get: get
-    }
-  })
-  .factory('SpotifyPreview', function($http) {
-
-    var request = function(song, artist, isrc) {
-
-      var artistString = 'artist:' + artist + '+';
-      var songString = 'title:' + song;
-      var limit = '&type=track&limit=1'
-      var uri = 'http://api.spotify.com/v1/search?q=' + artistString + songString + limit; 
-
-      return $http({
-        method: 'GET',
-        url: uri
-      })
-      .then(function (res) {
-        return res.data.tracks.items[0].preview_url;
-      })
-    }
-
-    return {
-      request: request,
-    }
-  })
-  .factory('Genius', function($http) {
-
-    var flatten = function(list) {
-      var result = [];
-
-      for (var i = 0; i < list.length; i++) {
-        var item = list[i];
-        var notes = item.annotations[0].body.plain;
-        result.push(notes);
-      }
-
-      return result;
-    };
-
-    var request = function(artist, title) {
+    var youtubeRequest = function(artist, title) {
 
       var options = {artist: artist, title: title};
 
@@ -77,10 +35,32 @@ angular.module('graffiti.services', [])
       .then(function (res) {
         return res.data;
       })
+    };
+
+    return {
+      geniusRequest: geniusRequest,
+      youtubeRequest: youtubeRequest,
+      set: set,
+      get: get
     }
+  })
+  .factory('Helpers', function($http) {
+
+    var flatten = function(list) {
+      var result = [];
+
+      for (var i = 0; i < list.length; i++) {
+        var item = list[i];
+        var notes = item.annotations[0].body.plain;
+        var sentences = notes.split('.');
+        result = result.concat(sentences);
+      }
+
+      return result;
+    };
 
     return {
       flatten: flatten,
-      request: request
     }
+
   })

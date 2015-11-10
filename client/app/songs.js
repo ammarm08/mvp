@@ -1,33 +1,45 @@
 angular.module('graffiti.songs', [])
-  .controller('ResultsController', function($scope, $location, $sce, $interval, Artists, SpotifyPreview, Genius) {
+  .controller('ResultsController', function($scope, $location, $sce, $interval, API, Helpers) {
 
-    $scope.data = Artists.get();
+    $scope.data = API.get();
     $scope.data.artist = $scope.data.hits[0].result.primary_artist.name || null;
+    var runningInterval;
 
     $scope.getAnnotations = function(id, title) {
+
       $scope.data.song = title;
       $scope.data.video = "";
+      $scope.running = false;
 
-      Genius.request($scope.data.artist, $scope.data.song)
+      API.youtubeRequest($scope.data.artist, $scope.data.song)
       .then(function(res) {
         var videoId = res.items[0].id.videoId;
         $scope.data.video = $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + videoId + "?rel=0&autoplay=1");
-
       })
 
-      Artists.request({song: id}, 'referents')
+      API.geniusRequest({song: id}, 'referents')
       .then(function(res) {
         var parsed = JSON.parse(res.body);
-        $scope.data.annotations = Genius.flatten(parsed.response.referents);
-
-        // $scope.data.annotations = parsed.response.song.description_annotation.annotations[0].body.plain;
-        
-        // SpotifyPreview.request(parsed.response.song.title, $scope.data.artist)
-        // .then(function(previewUrl) {
-        //   $scope.data.current = $sce.trustAsResourceUrl(previewUrl);
-        //   document.getElementById('current').play();
-        // })
+        $scope.data.annotations = Helpers.flatten(parsed.response.referents);
+        $scope.startInterval();
       })
     }
+
+    $scope.startInterval = function() {
+      $scope.stopInterval();
+      var items = $scope.data.annotations.slice(0);
+
+      var runningInterval = $interval(function() {
+
+        if (items.length) {
+          $scope.data.note = items.shift();
+        }
+
+      }, 5000);
+    };
+
+    $scope.stopInterval = function() {
+      $interval.cancel(runningInterval);
+    };
 
   })

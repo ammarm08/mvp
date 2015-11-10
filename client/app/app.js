@@ -5,7 +5,6 @@ angular.module('graffiti', [
   'graffiti.songs', 
   'ngRoute', 
   'ui.bootstrap',
-  'youtube-embed'
 ])
 
   .config(function($routeProvider, $httpProvider) {
