@@ -1,0 +1,33 @@
+
+<button type="button" class="btn btn-default home" ng-click="redirect()">
+  <span class="glyphicon glyphicon-home" aria-hidden="true" href="#/home"></span>
+</button>
+
+<div class='video-container embed-responsive embed-responsive-16by9 video-wrapper'>
+  <iframe width="420" height="315" ng-src="{{data.video}}" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div class='container' ng-controller="ResultsController">
+  <div class = "row">
+    <div class='annotations'>
+      <span class='note'>{{data.note}}</span>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "music">
+
+      <uib-carousel>
+        <uib-slide ng-repeat='song in data.hits | orderBy:"-result.pyongs_count"' 
+          ng-if='song.result.pyongs_count' active='song.active'>
+            <p class='caption'>{{song.result.title}}</p>
+            <img ng-src="{{song.result.header_image_url}}" ng-click="getAnnotations(song.result.id, song.result.title)"/>
+        </uib-slide>
+      </uib-carousel>
+
+    </div>
+  </div>
+</div>
+
+
+
