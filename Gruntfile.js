@@ -20,17 +20,6 @@ module.exports = function(grunt) {
       }
     },
 
-    uglify: {
-      options : {
-        mangle : false
-      },
-      my_target : {
-        files: {
-        'dist/vendor.min.js': ['dist/vendor.js']
-        }
-      }
-    },
-
     cssmin: {
         css : {
           src: ['client/styles/style.css'],
@@ -45,9 +34,7 @@ module.exports = function(grunt) {
           'client/lib/**/*.js',
         ],
         tasks: [
-          'concat',
-          'uglify'
-        ]
+          'concat'        ]
       },
       css: {
         files: 'client/styles/*.css',
@@ -62,7 +49,6 @@ module.exports = function(grunt) {
     },
   });
 
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -83,7 +69,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('build', [ 
-    'concat', 'uglify', 'cssmin'
+    'concat', 'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
