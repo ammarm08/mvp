@@ -7,9 +7,18 @@ var app = express();
 var musicRouter = express.Router();
 
 //Genius API interface
-var token = require('key.js').key
+var token = require('key.js').key;
 var Genius = require("node-genius");
 var geniusClient = new Genius(token);
+
+//Youtube Search API interface
+var secret = 'NaevNT7q6EGTCqL1sB7eSzk3';
+var code = '241567937961-k4r7fom3cksnhma1m0qar7bq23etb0ba.apps.googleusercontent.com';
+var api = 'AIzaSyA0iXbcuswUS6a7_tKhS9jgBsjs9aJFxiE';
+var YouTube = require('youtube-node');
+var youtube = new YouTube();
+youtube.setKey(api);
+
 
 //middleware
 app.use(morgan('dev'));
@@ -52,7 +61,6 @@ var fetchSongs = function(req, res, next) {
 var fetchReferents = function(req, res, next) {
 
   var song_id = req.body.song
-  console.log(song_id);
 
   var baseRequest = request.defaults({
     baseUrl: "https://api.genius.com",
@@ -73,24 +81,30 @@ var fetchReferents = function(req, res, next) {
     res.json(data);
   });
 
+}
 
+var searchYoutube = function(req, res, next) {
+
+  var query = req.body.artist + " " + req.body.title;
+   
+  youtube.search(query, 2, function(error, result) {
+    if (error) {
+      console.log(error);
+    }
+    else {
+      console.log(JSON.stringify(result, null, 2));
+      res.json(result);
+    }
+  });
 
 }
 //router
 
-musicRouter.route('/').get(basicStuff);
-
-musicRouter.route('/artists')
-  .get(basicStuff)
-  .post(fetchArtists);
-
-musicRouter.route('/songs')
-  .get(basicStuff)
-  .post(fetchSongs);
-
-musicRouter.route('/referents')
-  .get(basicStuff)
-  .post(fetchReferents);
+musicRouter.get('/', basicStuff);
+musicRouter.post('/artists', fetchArtists);
+musicRouter.post('/songs', fetchSongs);
+musicRouter.post('/referents', fetchReferents);
+musicRouter.post('/youtube', searchYoutube);
 
 //fire up the server
 console.log('Listening on 3000');

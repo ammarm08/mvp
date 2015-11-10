@@ -51,7 +51,7 @@ angular.module('graffiti.services', [])
       request: request,
     }
   })
-  .factory('Genius', function() {
+  .factory('Genius', function($http) {
 
     var flatten = function(list) {
       var result = [];
@@ -65,7 +65,22 @@ angular.module('graffiti.services', [])
       return result;
     };
 
+    var request = function(artist, title) {
+
+      var options = {artist: artist, title: title};
+
+      return $http({
+        method: 'POST',
+        url: '/api/music/youtube',
+        data: options
+      })
+      .then(function (res) {
+        return res.data;
+      })
+    }
+
     return {
-      flatten: flatten
+      flatten: flatten,
+      request: request
     }
   })
