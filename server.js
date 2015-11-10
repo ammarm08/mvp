@@ -7,17 +7,14 @@ var app = express();
 var musicRouter = express.Router();
 
 //Genius API interface
-var token = require('key.js').key;
+var tokens = require('key.js');
 var Genius = require("node-genius");
-var geniusClient = new Genius(token);
+var geniusClient = new Genius(tokens.geniusKey);
 
 //Youtube Search API interface
-var secret = 'NaevNT7q6EGTCqL1sB7eSzk3';
-var code = '241567937961-k4r7fom3cksnhma1m0qar7bq23etb0ba.apps.googleusercontent.com';
-var api = 'AIzaSyA0iXbcuswUS6a7_tKhS9jgBsjs9aJFxiE';
 var YouTube = require('youtube-node');
 var youtube = new YouTube();
-youtube.setKey(api);
+youtube.setKey(tokens.youtubeKey);
 
 
 //middleware
@@ -64,7 +61,7 @@ var fetchReferents = function(req, res, next) {
 
   var baseRequest = request.defaults({
     baseUrl: "https://api.genius.com",
-    headers: { "Authorization": "Bearer " + token }
+    headers: { "Authorization": "Bearer " + tokens.geniusKey }
   });
 
   var options = {
