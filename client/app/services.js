@@ -52,7 +52,7 @@ angular.module('graffiti.services', [])
       for (var i = 0; i < list.length; i++) {
         var item = list[i];
         var notes = item.annotations[0].body.plain;
-        var sentences = notes.split('.');
+        var sentences = notes.split('. ');
         result = result.concat(sentences);
       }
 
