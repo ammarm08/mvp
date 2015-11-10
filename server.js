@@ -6,6 +6,9 @@ var request = require('request');
 var app = express();
 var musicRouter = express.Router();
 
+// PORT
+var port = process.env.PORT || 3000;
+
 //Genius API interface
 var tokens = require('key.js');
 var Genius = require("node-genius");
@@ -105,5 +108,5 @@ musicRouter.post('/youtube', searchYoutube);
 
 //fire up the server
 console.log('Listening on 3000');
-app.listen(3000);
+app.listen(port);
 
