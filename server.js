@@ -6,8 +6,9 @@ var app = express();
 var musicRouter = express.Router();
 
 //Genius API interface
+var token = require('key.js').key
 var Genius = require("node-genius");
-var geniusClient = new Genius('Q8PH8LcJ-EP-l57t-sJiSSzhZUxMzOlNGoj9USpysNzc2KUjeBceenPsHTSoGMNi');
+var geniusClient = new Genius(token);
 
 //middleware
 app.use(morgan('dev'));
