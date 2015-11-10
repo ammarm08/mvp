@@ -13,15 +13,8 @@ nav {
   background: yellow;
 }
 
-h1 {
-  text-align: center;
-  margin: auto;
-  width: 600px;
-  font-size: 50pt;
-}
-
 form {
-  margin: 500px auto;
+  margin: 300px auto;
   width: 600px;
 }
 
