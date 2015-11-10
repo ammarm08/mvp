@@ -10,7 +10,13 @@ var controller = require('./handlers');
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/client'));
+
+if (process.env.NODE_ENV) {
+  app.use(express.static(__dirname + '/dist/views'));
+} else {
+  app.use(express.static(__dirname + '/client'));
+}
+
 app.use('/api/music', musicRouter);
 
 musicRouter.get('/', controller.allGood);
