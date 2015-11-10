@@ -17,20 +17,20 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Graffiti.IO
+  > Graffiti
 
 ## Sub-Heading ##
   > Read the liner notes while listening to your favorite band.
 
 ## Summary ##
-  > Graffiti.IO is for people who can't multitask between listening to the music and listening to the lyrics.
+  > Graffiti is for people who can't multitask between listening to the music and listening to the lyrics.
   Enter an artist, select a song, and hit play. Liner notes + annotations will periodically pop up to give you more context about the song.
 
 ## Problem ##
-  > Music isn't just about the beat, and it isn't just about the lyrics. Unfortunately, some goldfish-minded people like the Graffit.IO founder can't pay attention to both at the same time. This app gives the perpetual head-nodders and beat-rockers a chance to see what the song is about without needing to pay very careful attention to the lyrics.
+  > The dude who built Graffiti has a tough time paying attention to lyrics. If the beat is ill, that's the only thing he can focus on. This app gives the perpetual head-nodders and beat-rockers like him a chance to see what the song is about without needing to pay very careful attention to the lyrics.
 
 ## Solution ##
-  > As a song is playing, Graffiti.IO will periodically serve up an annotation or description that has been highly upvoted on the Genius.com platform. That's it.
+  > As a song is playing, Graffiti will display a stream of annotations and liner notes for the song. That's it.
 
 ## Quote from You ##
   > "Our product is really just an integration of alot of cool things already out there. While our current beta product is limited to just annotations pulled from Genius, our long-term goal is to build out interactivity similar to the real-time commenting of Periscope livestreams."
@@ -39,7 +39,7 @@ Once the project moves into development, the press release can be used as a touc
   > 1. Enter an artist. 2. Pick a song. 3. Hit play.
 
 ## Customer Quote ##
-  > "This is the new-age vinyl listening session. On rainy Friday nights, I call my friends over, order in some bomb-ass pad thai, put this shit on my projector screen, and we literally 'watch' the music and talk about it."
+  > "This is the new-age vinyl listening session. On rainy Friday nights, I call my friends over, order in some bomb-ass pad thai, put this shit on my projector screen, and we chill, read, vibe, and chat."
 
 ## Closing and Call to Action ##
-  > Take Graffiti.IO for a test ride at graffitiIO.herokuapp.com
+  > Take Graffiti.IO for a test ride at http://graffiti-mvp.azurewebsites.net/
