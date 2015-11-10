@@ -1,21 +1,37 @@
 body {
   font-family: 'Maven Pro';
+  background-color: #4E1B9B;
   background-image: url('/assets/subway.jpg');
+  background: linear-gradient(0deg, rgba(78,27,155,0.5), rgba(78,27,155,0.5)), url('/assets/subway.jpg');
   background-size: 100%;
 }
 
-nav {
-  background-color: black;
+.header {
+  margin: 10px;
+  width: 8%;
 }
 
-.navbar-brand {
-  color: black;
-  background: yellow;
+h1 {
+  color: yellow;
+  font-size: 20pt;
+  border: 2pt solid yellow;
+  text-align: center;
+}
+
+h1:hover {
+  background-color: #4E1B9B;
+  cursor: pointer;
 }
 
 form {
-  margin: 300px auto;
+  margin: 500px auto;
   width: 600px;
+}
+
+form input {
+  border: 2pt solid yellow;
+  text-decoration: none;
+  border-radius: 1px;
 }
 
 .music {
@@ -61,5 +77,20 @@ uib-slide {
 
 .video-container {
   position: absolute;
+}
+
+.home {
+  outline: 0;
+  background-color: Transparent;
+  border: 2pt solid yellow;
+}
+
+.home:hover {
+  background-color: #4E1B9B;
+  cursor: pointer;
+}
+
+.home span {
+  color: yellow;
 }
 

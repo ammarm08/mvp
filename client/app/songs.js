@@ -5,6 +5,10 @@ angular.module('graffiti.songs', [])
     $scope.data.artist = $scope.data.hits[0].result.primary_artist.name || null;
     var runningInterval;
 
+    $scope.redirect = function() {
+      $location.path('/home');
+    }
+
     $scope.getAnnotations = function(id, title) {
 
       $scope.data.song = title;
