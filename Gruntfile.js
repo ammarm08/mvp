@@ -26,7 +26,6 @@ module.exports = function(grunt) {
       },
       my_target : {
         files: {
-        'dist/app.min.js' : ['dist/app.js'],
         'dist/vendor.min.js': ['dist/vendor.js']
         }
       }
