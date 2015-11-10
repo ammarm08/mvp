@@ -2,7 +2,7 @@ body {
   font-family: 'Maven Pro';
   background-color: #4E1B9B;
   background-image: url('/assets/subway.jpg');
-  background: linear-gradient(0deg, rgba(78,27,155,0.5), rgba(78,27,155,0.5)), url('/assets/subway.jpg');
+  background: linear-gradient(0deg, rgba(78,27,155,0.5), rgba(78,27,155,0.5)), url('/assets/aerial-city.jpg');
   background-size: 100%;
 }
 
