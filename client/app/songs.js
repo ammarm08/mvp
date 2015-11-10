@@ -6,11 +6,13 @@ angular.module('graffiti.songs', [])
 
     $scope.getAnnotations = function(id, title) {
       $scope.data.song = title;
+      $scope.data.video = "";
 
       Genius.request($scope.data.artist, $scope.data.song)
       .then(function(res) {
         var videoId = res.items[0].id.videoId;
-        $scope.data.video = $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + videoId);
+        $scope.data.video = $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + videoId + "?rel=0&autoplay=1");
+
       })
 
       Artists.request({song: id}, 'referents')

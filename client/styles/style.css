@@ -66,3 +66,7 @@ uib-slide {
   font-size: 50px;
 }
 
+.video-container {
+  position: absolute;
+}
+
