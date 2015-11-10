@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 if (process.env.NODE_ENV) {
-  app.use(express.static(__dirname + '/dist'));
+  app.use(express.static(__dirname + '/dist/views'));
 } else {
   app.use(express.static(__dirname + '/client'));
 }
