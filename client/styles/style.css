@@ -1,18 +1,28 @@
+body {
+  font-family: 'Maven Pro';
+}
 
 h1 {
   text-align: center;
-  margin: 100px auto;
+  margin: auto;
   width: 600px;
+  font-size: 50pt;
 }
 
 form {
-  margin: auto;
+  margin: 500px auto;
   width: 600px;
 }
 
-
+.music {
+  margin: 250px auto;
+}
 
 img{
   margin:auto;
-  width: 400px;
 }
+
+audio{
+  width: 100%;
+}
+

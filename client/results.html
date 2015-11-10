@@ -1,18 +1,29 @@
 <div class='container' ng-controller="ResultsController">
-  <audio id='current' preload="auto" ng-src="{{data.current}}" 
-        type="audio/mp3" controls onloadeddata="this.play()">
-  </audio>
 
-  <div>{{data.annotations}}</div>
+  <div class = "row">
 
-  <uib-carousel>
-    <uib-slide ng-repeat='song in data.hits | orderBy:"-result.pyongs_count"' 
-      ng-if='song.result.pyongs_count' active='song.active'>
-        <p>Title: {{song.result.title}}</p>
-        <img ng-src="{{song.result.header_image_url}}" ng-click="getAnnotations(song.result.id)"/>
-      </div>
-    </uib-slide>
-  </uib-carousel>
+    <div class = "music col-sm-3 pull-left">
+
+      <uib-carousel>
+        <uib-slide ng-repeat='song in data.hits | orderBy:"-result.pyongs_count"' 
+          ng-if='song.result.pyongs_count' active='song.active'>
+            <p class='caption'>{{song.result.title}}</p>
+            <img ng-src="{{song.result.header_image_url}}" ng-click="getAnnotations(song.result.id)"/>
+        </uib-slide>
+      </uib-carousel>
+
+      <audio id='current' preload="auto" ng-src="{{data.current}}" 
+            type="audio/mp3" controls onloadeddata="this.play()">
+      </audio>
+
+    </div>
+
+    <div class='col-sm-9 pull-right'>
+      <span class='notes'>{{data.note}}</span>
+    </div>
+  
+  </div>
+
 </div>
 
 

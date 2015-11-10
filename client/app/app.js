@@ -1,4 +1,12 @@
-angular.module('graffiti', ['graffiti.services', 'graffiti.home', 'graffiti.songs', 'ngRoute', 'ui.bootstrap'])
+
+angular.module('graffiti', [
+  'graffiti.services', 
+  'graffiti.home', 
+  'graffiti.songs', 
+  'ngRoute', 
+  'ui.bootstrap',
+])
+
   .config(function($routeProvider, $httpProvider) {
     $routeProvider
       .when('/home', {
@@ -95,7 +103,7 @@ angular.module('graffiti.home', [])
   })
 
 angular.module('graffiti.songs', [])
-  .controller('ResultsController', function($scope, $location, $sce, Artists, SpotifyPreview, Genius) {
+  .controller('ResultsController', function($scope, $location, $sce, $interval, Artists, SpotifyPreview, Genius) {
 
     $scope.data = Artists.get();
     $scope.data.artist = $scope.data.hits[0].result.primary_artist.name || null;
@@ -104,8 +112,12 @@ angular.module('graffiti.songs', [])
       Artists.request({song: id}, 'songs')
       .then(function(res) {
         var parsed = JSON.parse(res);
-        $scope.data.annotations = parsed.response.song.description_annotation.annotations[0].body.plain;
+        $scope.data.annotations = parsed.response.song.description_annotation.annotations[0].body.plain.split('.');
         console.log($scope.data.annotations);
+
+        $interval.cancel($scope.textAnimation);
+        $scope.data.note = $scope.data.annotations.shift();
+        $scope.textAnimation;
         
         SpotifyPreview.request(parsed.response.song.title, $scope.data.artist)
         .then(function(previewUrl) {
@@ -114,5 +126,12 @@ angular.module('graffiti.songs', [])
         })
       })
     }
+
+    $scope.textAnimation = $interval(function() {
+      if ($scope.data.annotations.length === 0) {
+        $interval.cancel($scope.textAnimation);
+      }
+      $scope.data.note = $scope.data.annotations.shift();
+    }, 5000)
 
   })

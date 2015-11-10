@@ -7,6 +7,7 @@
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
     "morgan": "^1.1.1",
+    "nlp_compromise": "^1.1.4",
     "node-genius": "^1.0.4",
     "passport": "^0.2.0",
     "passport-local": "^1.0.0",
