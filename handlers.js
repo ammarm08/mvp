@@ -1,13 +1,7 @@
 var request = require('request');
 
-// Setting appropriate API keys
-
-if (!process.env.NODE_ENV) {
-  var tokens = require('key.js');
-}
-
-var geniusKey = process.env.GENIUS_KEY || tokens.geniusKey;
-var youtubeKey = process.env.YOUTUBE_KEY || tokens.youtubeKey;
+var geniusKey = process.env.GENIUS_KEY || require('key.js').geniusKey;
+var youtubeKey = process.env.YOUTUBE_KEY || require('key.js').youtubeKey;
 
 var Genius = require("node-genius");
 var geniusClient = new Genius(geniusKey);
