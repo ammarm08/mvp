@@ -1,4 +1,7 @@
-#mvp
+#Graffiti
+### The music junkie's music player ###
+
+![Alt text](graffiti.gif "Graffiti Walkthrough")
 
 #### User Notes ####
 
