@@ -4,7 +4,7 @@ angular.module('graffiti', [
   'graffiti.home', 
   'graffiti.songs', 
   'ngRoute', 
-  'ui.bootstrap',
+  'ui.bootstrap'
 ])
 
   .config(function($routeProvider, $httpProvider) {
@@ -26,7 +26,7 @@ angular.module('graffiti.home', [])
   .controller('HomeController', function($scope, $location, API) {
 
     $scope.data = {};
-
+    
     $scope.getData = function() {
       API.geniusRequest($scope.data, 'artists')
       .then(function(res) {
@@ -43,7 +43,7 @@ angular.module('graffiti.services', [])
     var savedData = {};
 
     var get = function() {
-      return savedData;
+      return Object.keys(savedData).length ? savedData : false;
     };
 
     var set = function(val) {
@@ -106,8 +106,13 @@ angular.module('graffiti.services', [])
 angular.module('graffiti.songs', [])
   .controller('ResultsController', function($scope, $location, $sce, $interval, API, Helpers) {
 
-    $scope.data = API.get();
-    $scope.data.artist = $scope.data.hits[0].result.primary_artist.name || null;
+    $scope.data = {note: "Whoops, something went wrong. Go home and search again!"};
+
+    if (API.get()) {
+      $scope.data = API.get();
+      $scope.data.artist = $scope.data.hits[0].result.primary_artist.name || null;
+    }
+
     var runningInterval;
 
     $scope.redirect = function() {
