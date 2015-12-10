@@ -4,7 +4,7 @@ angular.module('graffiti', [
   'graffiti.home', 
   'graffiti.songs', 
   'ngRoute', 
-  'ui.bootstrap',
+  'ui.bootstrap'
 ])
 
   .config(function($routeProvider, $httpProvider) {

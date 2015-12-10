@@ -1,8 +1,13 @@
 angular.module('graffiti.songs', [])
   .controller('ResultsController', function($scope, $location, $sce, $interval, API, Helpers) {
 
-    $scope.data = API.get();
-    $scope.data.artist = $scope.data.hits[0].result.primary_artist.name || null;
+    $scope.data = {note: "Whoops, something went wrong. Go home and search again!"};
+
+    if (API.get()) {
+      $scope.data = API.get();
+      $scope.data.artist = $scope.data.hits[0].result.primary_artist.name || null;
+    }
+
     var runningInterval;
 
     $scope.redirect = function() {

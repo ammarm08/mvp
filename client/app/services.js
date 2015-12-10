@@ -4,7 +4,7 @@ angular.module('graffiti.services', [])
     var savedData = {};
 
     var get = function() {
-      return savedData;
+      return Object.keys(savedData).length ? savedData : false;
     };
 
     var set = function(val) {

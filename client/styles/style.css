@@ -1,42 +1,63 @@
+
+/*
+Site-wide
+*/
+
 body {
-  font-family: 'Maven Pro';
-  background-color: #4E1B9B;
-  background-image: url('/assets/subway.jpg');
-  background: linear-gradient(0deg, rgba(78,27,155,0.5), rgba(78,27,155,0.5)), url('/assets/aerial-city.jpg');
-  background-size: 100%;
+  font-family: 'Helvetica Neue';
+  background: url('/assets/telephone-booth.jpg');
+  background-size: cover;
+  background-color: white;
 }
 
 .header {
   margin: 10px;
   width: 8%;
+  height: 100px;
 }
 
 .headers {
   position: relative;
 }
 
-h1 {
-  color: yellow;
-  font-size: 20pt;
-  border: 2pt solid yellow;
-  text-align: center;
-  position: absolute;
-  top: 0px;
-  padding: 4px;
-}
-
-h1:hover {
-  background-color: #4E1B9B;
-  cursor: pointer;
-}
+/*
+Home page
+*/
 
 form {
-  margin: 400px auto;
+  margin: 350px 10px;
   width: 600px;
 }
 
+form h2 {
+  color: black;
+  font-size: 20pt;
+  font-weight: 200;
+  padding: 0 10px;
+  opacity: 0.8;
+  margin-bottom: 40px;
+}
+
+.form-control {
+  height: 50px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
 .form-control:focus {
-  border-color: yellow;
+  border-color: none;
+  outline: 0 none;
+  box-shadow: none;
+}
+
+
+/*
+Music carousel
+*/
+
+audio{
+  width: 100%;
 }
 
 .music {
@@ -48,23 +69,8 @@ img{
   width: 500px;
 }
 
-audio{
-  width: 100%;
-}
-
-.annotations {
-  margin: 20px auto;
-  position: relative;
-}
-
-.note {
-  font-size: 20pt;
-  text-align: center;
-  color: black;
-  background: yellow;
-  position: absolute;
-  top: 5%;
-  z-index: 99;
+img:hover {
+  cursor: pointer;
 }
 
 uib-slide {
@@ -72,16 +78,57 @@ uib-slide {
 }
 
 .caption {
-  color: black;
-  background: yellow;
-  position: absolute;
-  top: 48%;
-  right: 40%;
-  font-size: 50px;
+  color: white;
+  background-color: black;
+  opacity: 0.6;
+  font-weight: 200;
+  font-variant: small-caps;
+  font-size: 20pt;
 }
 
 .video-container {
   position: absolute;
+}
+
+/*
+Annotations
+*/
+
+.annotations {
+  margin: 20px auto;
+  position: relative;
+  height: 600px;
+}
+
+.note {
+  font-size: 16pt;
+  font-weight: 200;
+  text-align: center;
+  color: black;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 99;
+}
+
+/*
+Logo/icon styling
+*/
+
+h1 {
+  color: black;
+  font-size: 20pt;
+  border: 1pt solid black;
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  padding: 8px;
+}
+
+h1:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
 
 .home {
@@ -89,19 +136,18 @@ uib-slide {
   width: 40px;
   outline: 0;
   background-color: Transparent;
-  border: 2pt solid yellow;
+  border: 1pt solid black;
+}
+
+span {
+  color: black;
+}
+
+span:hover {
+  color: white;
 }
 
 .home:hover {
-  background-color: #4E1B9B;
+  background-color: black;
   cursor: pointer;
 }
-
-img:hover {
-  cursor: pointer;
-}
-
-.home span {
-  color: yellow;
-}
-
