@@ -5,7 +5,7 @@ Site-wide
 
 body {
   font-family: 'Helvetica Neue';
-  background: url('/assets/telephone-booth.jpg');
+  background: url('/assets/telephone-booth.jpg') no-repeat;
   background-size: cover;
   background-color: white;
 }
