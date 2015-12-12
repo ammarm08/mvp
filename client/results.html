@@ -10,23 +10,25 @@
 <div class='container' ng-controller="ResultsController">
 
   <div class = "row">
-    <div class = "col-sm-6">
+    <div class = "col-sm-4">
       <div class = "music">
 
-        <uib-carousel>
-          <uib-slide ng-repeat='song in data.hits | orderBy:"-result.pyongs_count"' 
+          <ul ng-repeat='song in data.hits | orderBy:"-result.pyongs_count"' 
             ng-if='song.result.pyongs_count' active='song.active'>
-              <p class='caption'>{{song.result.title}}</p>
-              <img ng-src="{{song.result.header_image_url}}" ng-click="getAnnotations(song.result.id, song.result.title)"/>
-          </uib-slide>
-        </uib-carousel>
+              <li class='caption'
+              ng-click="getAnnotations(song.result.id, song.result.title, song.result.header_image_url)">
+                {{song.result.title}}
+                <span class="glyphicon glyphicon-play-circle"></span>
+              </li>
+          </ul>
 
       </div>
     </div>
-    <div class = "col-sm-2"></div>
+    <div class = "col-sm-4"></div>
     <div class = "col-sm-4">
       <div class='annotations'>
         <span class='note'>{{data.note}}</span>
+        <div class="song-img"><img ng-src="{{image}}"></div>
       </div>
     </div>
   </div>

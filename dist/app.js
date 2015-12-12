@@ -107,6 +107,7 @@ angular.module('graffiti.songs', [])
   .controller('ResultsController', function($scope, $location, $sce, $interval, API, Helpers) {
 
     $scope.data = {note: "Whoops, something went wrong. Go home and search again!"};
+    $scope.image = "";
 
     if (API.get()) {
       $scope.data = API.get();
@@ -119,10 +120,11 @@ angular.module('graffiti.songs', [])
       $location.path('/home');
     }
 
-    $scope.getAnnotations = function(id, title) {
+    $scope.getAnnotations = function(id, title, img) {
 
       $scope.data.song = title;
       $scope.data.video = "";
+      $scope.image = img;
       $scope.running = false;
 
       API.youtubeRequest($scope.data.artist, $scope.data.song)

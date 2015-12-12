@@ -6,6 +6,7 @@ Site-wide
 body {
   font-family: 'Helvetica Neue';
   background: url('/assets/telephone-booth.jpg') no-repeat;
+  opacity: 0.9;
   background-size: cover;
   background-color: white;
 }
@@ -64,26 +65,18 @@ audio{
   margin: 50px auto;
 }
 
-img{
-  margin:auto;
-  width: 500px;
-}
-
-img:hover {
-  cursor: pointer;
-}
-
-uib-slide {
-  position: relative;
-}
-
 .caption {
-  color: white;
-  background-color: black;
-  opacity: 0.6;
   font-weight: 200;
-  font-variant: small-caps;
-  font-size: 20pt;
+  font-size: 10pt;
+  list-style-type: none;
+}
+
+.glyphicon-play-circle:hover {
+  color: red;
+}
+
+.caption:hover {
+  cursor: pointer;
 }
 
 .video-container {
@@ -95,20 +88,22 @@ Annotations
 */
 
 .annotations {
-  margin: 20px auto;
-  position: relative;
+  margin: 50px auto;
   height: 600px;
 }
 
 .note {
-  font-size: 16pt;
+  font-size: 12pt;
   font-weight: 200;
   text-align: center;
   color: black;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 99;
+}
+
+.song-img img {
+  margin: 50px auto;
+  width: 75%;
+  top: 260px;
+  position: absolute;
 }
 
 /*
@@ -139,11 +134,11 @@ h1:hover {
   border: 1pt solid black;
 }
 
-span {
+.glyphicon-home {
   color: black;
 }
 
-span:hover {
+.glyphicon-home:hover {
   color: white;
 }
 
