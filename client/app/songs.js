@@ -3,6 +3,7 @@ angular.module('graffiti.songs', [])
 
     $scope.data = {note: "Whoops, something went wrong. Go home and search again!"};
     $scope.image = "";
+    $scope.current = { artist: "", title: "" }
 
     if (API.get()) {
       $scope.data = API.get();
@@ -16,6 +17,9 @@ angular.module('graffiti.songs', [])
     }
 
     $scope.getAnnotations = function(id, title, img) {
+
+      $scope.current.title = title;
+      $scope.current.artist = $scope.data.artist + ": ";
 
       $scope.data.song = title;
       $scope.data.video = "";
