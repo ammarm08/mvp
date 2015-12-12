@@ -102,8 +102,9 @@ Annotations
 .song-img img {
   margin: 50px auto;
   width: 75%;
-  top: 260px;
+  top: 230px;
   position: absolute;
+  opacity: 0.4;
 }
 
 /*
