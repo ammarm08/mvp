@@ -1,0 +1,2 @@
+exports.geniusKey = "lC5m0f_UV9jVq8YBp9cd_Kz7wVPqVYn0ZsyG7690cLieIvqyFpS9yhYQDgRqJLRq";
+exports.youtubeKey = "AIzaSyA0iXbcuswUS6a7_tKhS9jgBsjs9aJFxiE";

@@ -1,11 +1,12 @@
 
-angular.module('graffiti', [
-  'graffiti.services', 
-  'graffiti.home', 
-  'graffiti.songs', 
-  'ngRoute', 
-  'ui.bootstrap'
-])
+(function() {
+  angular.module('graffiti', [
+    'graffiti.services', 
+    'graffiti.home', 
+    'graffiti.songs', 
+    'ngRoute', 
+    'ui.bootstrap'
+  ])
 
   .config(function($routeProvider, $httpProvider) {
     $routeProvider
@@ -21,3 +22,5 @@ angular.module('graffiti', [
         redirectTo: '/home'
       })
   });
+
+})()

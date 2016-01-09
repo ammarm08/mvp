@@ -1,7 +1,7 @@
 var request = require('request');
 
-var geniusKey = process.env.GENIUS_KEY || require('key.js').geniusKey;
-var youtubeKey = process.env.YOUTUBE_KEY || require('key.js').youtubeKey;
+var geniusKey = process.env.GENIUS_KEY || require('./key.js').geniusKey;
+var youtubeKey = process.env.YOUTUBE_KEY || require('./key.js').youtubeKey;
 
 var Genius = require("node-genius");
 var geniusClient = new Genius(geniusKey);
@@ -11,10 +11,6 @@ var youtube = new YouTube();
 youtube.setKey(youtubeKey);
 
 // request handlers
-
-exports.allGood = function(req, res, next) {
-  res.send('test');
-}
 
 exports.fetchArtists = function(req, res, next) {
 
