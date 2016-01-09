@@ -4,6 +4,9 @@
   "description": "",
   "main": "app.js",
   "start": "grunt deploy",
+  "scripts": {
+    "start": "node server/server.js"
+  },
   "dependencies": {
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
